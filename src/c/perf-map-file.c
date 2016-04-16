@@ -21,7 +21,6 @@
 #include <sys/types.h>
 #include <stdio.h>
 
-#include <error.h>
 #include <errno.h>
 
 #include "perf-map-file.h"
@@ -30,7 +29,7 @@ FILE *perf_map_open(pid_t pid) {
     char filename[500];
     snprintf(filename, sizeof(filename), "/tmp/perf-%d.map", pid);
     FILE * res = fopen(filename, "w");
-    if (!res) error(0, errno, "Couldn't open %s.", filename);
+    if (!res) printf("Couldn't open %s.", filename);
     return res;
 }
 
